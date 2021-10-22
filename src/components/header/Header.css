@@ -1,0 +1,56 @@
+.header
+{
+	background-color: #2D193C;
+
+	margin: 0px;
+	padding: 0px;
+
+	min-height: 128px;
+	max-height: 128px;
+}
+
+.header > div
+{
+	flex-basis: 100%;
+
+	margin-bottom: 10px;
+	margin-top: 10px;
+
+	margin-left: 10px;
+	margin-right: 10px;
+
+	color: whitesmoke;
+	font-size: 1.5em;
+
+	border-radius: 8px;
+	border-color: #FF7F50;
+	border-style: solid;
+
+	display: flex;
+	flex-direction: row;
+}
+
+.header > div > img
+{
+	min-width: 120px;
+	max-width: 120px;
+	min-height: 90px;
+	max-height: 90px;
+
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: 20px;
+}
+
+.header > div > label
+{
+	margin-right: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+
+	color: whitesmoke;
+	text-align: center;
+	font-size: 2em;
+	font-weight: bold;
+}

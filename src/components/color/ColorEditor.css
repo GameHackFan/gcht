@@ -1,0 +1,201 @@
+.colorEditor:focus,
+.colorEditor .colorList button,
+.colorSearchResult > button:focus
+{
+	outline: none;
+}
+
+.colorEditor .channelArea label
+{
+	min-width: 110px;
+}
+
+.colorEditor .channelArea select
+{
+	min-width: 180px;
+	margin-right: 20px;
+}
+
+.colorEditor .colorList
+{
+	min-height: 60px;
+
+	border-radius: 4px;
+	border-width: 1px;
+	border-style: solid;
+
+	padding-left: 8px;
+	padding-right: 8px;
+
+	color: whitesmoke;
+	border-color: whitesmoke;
+	background-color: #2D193CC0;
+}
+
+.colorEditor .colorList button
+{
+	min-height: 30px;
+	max-height: 30px;
+	min-width: 30px;
+	max-width: 30px;
+
+	border-radius: 4px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: whitesmoke;
+
+	margin-top: auto;
+	margin-bottom: auto;
+
+	cursor: pointer;
+}
+
+.colorEditor .colorList button:nth-child(8)
+{
+	min-height: 40px;
+	max-height: 40px;
+	min-width: 40px;
+	max-width: 40px;
+
+	border-width: 2px;
+	border-style: solid;
+	border-color: whitesmoke;
+}
+
+.colorEditor .colorList button:not(:last-child)
+{
+	margin-right: auto;
+}
+
+.colorEditor .selectArea input
+{
+	min-width: 100px;
+	max-width: 100px;
+
+	margin-right: 40px;
+}
+
+.colorEditor .selectArea div
+{
+	margin-top: 0;
+	margin-left: auto;
+}
+
+.colorEditor .title
+{
+	color: #2D193C;
+	font-weight: bold;
+	font-size: 1.5em;
+
+	margin-top: 24px;
+}
+
+.colorEditor .editArea label,
+.colorEditor .searchArea label
+{
+	min-width: 90px;
+}
+
+.colorEditor .editArea input[type="text"],
+.colorEditor .editArea input[type="number"],
+.colorEditor .searchArea input[type="text"],
+.colorEditor .searchArea input[type="number"]
+{
+	min-width: 60px;
+	max-width: 60px;
+}
+
+.colorEditor .editArea button
+{
+	margin-left: 20px;
+}
+
+.colorEditor .editArea > div:last-child
+{
+	margin-top: 40px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.colorEditor .editArea > div:last-child > div
+{
+	min-width: 80px;
+	max-width: 80px;
+	min-height: 80px;
+	max-height: 80px;
+
+	border-radius: 4px;
+	border-style: solid;
+	border-color: whitesmoke;
+	border-width: 1px;
+}
+
+.colorEditor .searchArea
+{
+	margin-left: auto;
+}
+
+.colorEditor .searchArea button
+{
+	margin-left: auto;
+}
+
+.colorEditor .searchArea .searchResult
+{
+	min-height: 200px;
+	max-height: 200px;
+	min-width: 300px;
+	max-width: 300px;
+	overflow-y: scroll;
+
+	border-radius: 4px;
+	border-width: 1px;
+	border-style: solid;
+
+	margin-top: 12px;
+
+	color: whitesmoke;
+	border-color: whitesmoke;
+	background-color: #2D193CC0;
+}
+
+.colorEditor .searchArea .searchResult button
+{
+	display: block;
+
+	color: whitesmoke;
+	background-color: transparent;
+
+	border: 0;
+
+	padding-right: 6px;
+	padding-left: 6px;
+	margin-left: 0;
+
+	white-space: nowrap
+}
+
+.colorEditor .searchArea .searchResult button:hover
+{
+	color: #FF7F50;
+	cursor: pointer;
+}
+
+.colorEditor .searchArea .searchResult .selected
+{
+	background-color: #F5F5F5C0;
+	color: #2D193C;
+}
+
+.colorEditor > .warning
+{
+	margin-top: 12px;
+	margin-bottom: 12px;
+	text-align: center;
+	display: block;
+}
+
+.colorEditor .patchArea button
+{
+	margin-right: 12px;
+}

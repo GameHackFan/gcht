@@ -1,0 +1,106 @@
+.colorConverter:focus,
+.colorConverter .windowContentLine > textarea
+{
+	outline: none;
+}
+
+.colorConverter .channelArea
+{
+	min-width: 350px;
+	margin-right: auto;
+}
+
+.colorConverter .converterArea,
+.colorConverter .conversionArea
+{
+	min-width: 292px;
+	margin-left: auto;
+}
+
+.colorConverter .title
+{
+	color: #2D193C;
+	font-weight: bold;
+	font-size: 1.5em;
+
+	margin-top: 24px;
+}
+
+.colorConverter .channelArea label
+{
+	min-width: 110px;
+}
+
+.colorConverter .channelArea select
+{
+	min-width: 180px;
+}
+
+.colorConverter .converterArea label
+{
+	min-width: 90px;
+}
+
+.colorConverter .converterArea input[type="text"]
+{
+	min-width: 60px;
+	max-width: 60px;
+	margin-right: 20px;
+}
+
+.colorConverter .converterArea button
+{
+	margin-left: auto;
+}
+
+.colorConverter .converterArea > div:last-child
+{
+	margin-top: 24px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.colorConverter .converterArea > div:last-child > div
+{
+	min-width: 40px;
+	max-width: 40px;
+	min-height: 40px;
+	max-height: 40px;
+
+	border-radius: 4px;
+	border-style: solid;
+	border-color: whitesmoke;
+	border-width: 1px;
+}
+
+.colorConverter .conversionArea label
+{
+	min-width: 100%;
+	margin: 0;
+}
+
+.colorConverter .windowContentLine > textarea
+{
+	resize: none;
+	min-height: 300px;
+	max-height: 300px;
+	min-width: 300px;
+	max-width: 300px;
+	overflow-y: scroll;
+
+	border-radius: 4px;
+	border-width: 1px;
+	border-style: solid;
+
+	color: whitesmoke;
+	border-color: whitesmoke;
+	background-color: #2D193CC0;
+}
+
+.colorConverter > .warning
+{
+	margin-top: 12px;
+	margin-bottom: 12px;
+	text-align: center;
+	display: block;
+}
