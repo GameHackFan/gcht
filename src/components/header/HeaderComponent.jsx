@@ -1,5 +1,7 @@
 import React from 'react';
 
+import gchpIcon from "../../images/base/gchp_icon.png";
+
 import "./Header.css";
 
 
@@ -13,7 +15,7 @@ const HeaderComponent = (props) =>
 			style={{zoom: props.zoom}}
 		>
 			<div>
-				<img src="src/images/base/gchp_icon.png" />
+				<img src={gchpIcon} />
 				<label>Game Color Helper Tool</label>
 			</div>
 		</header>

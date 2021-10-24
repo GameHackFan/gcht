@@ -15,7 +15,9 @@
 
 	color: whitesmoke;
 	background-color:#E25822C0;
-	box-shadow: 0 0 4px 2px #CB410B;
+	/* box-shadow: 0 0 4px 2px #CB410B; */
+
+	box-shadow: 0 0 4px 2px #2D193C;
 
 	border-radius: 6px;
 }
