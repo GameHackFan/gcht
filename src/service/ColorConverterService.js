@@ -11,24 +11,27 @@ class ColorConverterService
 		if(this.isValidColorMainData(fd) && this.isValidColorMainData(td))
 		{
 			let fc = this.getColor(from.red, from.green, from.blue);
-			let append = parseInt(from.append);
+			let append = parseInt(from.append, 16);
 			append = isNaN(append) ? 0 : append;
 			let fDec = this.convertAnyBitsColorToDecimal(
 					fc, fd.channelIndexes, fd.channelSize) + append;
+			fc = this.convertDecimalToAnyBitsColor(fDec,
+					fd.channelIndexes, fd.channelSize);
 			let c32 = this.convertAnyBitsTo32BitsColor(fc, fd.channelSize);
 			let tc = this.convert32BitsToAnyBitsColor(c32, td.channelSize);
 			let tDec = this.convertAnyBitsColorToDecimal(
 					tc, td.channelIndexes, td.channelSize);
 
+			console.log(fc);
 			let conversionData = {};
 			conversionData.fromColor = fc;
 			conversionData.fromHex = this.getHexValue(fDec, fd.colorSize, 6);
 			conversionData.fromDecimal = fDec;
-			conversionData.fromColorSize = fd.colorSize;
+			conversionData.fromColorSize = fd.colorSize * 8;
 			conversionData.toColor = tc;
 			conversionData.toHex = this.getHexValue(tDec, td.colorSize, 6);
 			conversionData.toDecimal = tDec;
-			conversionData.toColorSize = td.colorSize;
+			conversionData.toColorSize = td.colorSize * 8;
 			return conversionData;
 		}
 

@@ -199,8 +199,8 @@ class ColorEditor extends Component
 		
 		if(cd)
 		{
-			let c = {red: cd.colorAny[0],
-					green: cd.colorAny[1], blue: cd.colorAny[2]};
+			let c = {red: cd.colorAny[0], green: cd.colorAny[1],
+					blue: cd.colorAny[2], append: ""};
 			this.setState(c, () =>
 			{
 				editorService.forceComponentToUpdateByKey("colorEditor");
