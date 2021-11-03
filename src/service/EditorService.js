@@ -27,7 +27,7 @@ class EditorService
 	forceComponentToUpdate = (component) =>
 	{
 		if(component)
-			c.setState({rerender: component.rerender === true ? false : true});
+			component.setState({rerender: component.rerender === true ? false : true});
 	}
 
 	requestFile = (event) =>
