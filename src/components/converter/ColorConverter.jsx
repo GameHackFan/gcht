@@ -15,6 +15,7 @@ class ColorConverter extends Component
 		this.getSearchColorHex = this.getSearchColorHex.bind(this);
 		this.handleKeyDown = this.handleKeyDown.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+		this.onSwapFromToClick = this.onSwapFromToClick.bind(this);
 		this.onConvertColor = this.onConvertColor.bind(this);
 		this.createColorData = this.createColorData.bind(this);
 		this.fixConversionData = this.fixConversionData.bind(this);
@@ -40,6 +41,16 @@ class ColorConverter extends Component
 		cd.channelOrder = channelOrder;
 		cd.channelSize = channelSize;
 		return cd;
+	}
+
+	onSwapFromToClick(event)
+	{
+		let s = {}; 
+		s.fromChannelOrder = this.state.toChannelOrder;
+		s.fromChannelSize = this.state.toChannelSize;
+		s.toChannelOrder = this.state.fromChannelOrder;
+		s.toChannelSize = this.state.fromChannelSize;
+		this.setState(s);
 	}
 
 	onConvertColor(event)
@@ -85,7 +96,6 @@ class ColorConverter extends Component
 		return colorConverterService.getColorHex32(
 				cd, fromChannelOrder, fromChannelSize);
 	}
-	
 
 	render()
 	{
@@ -104,6 +114,7 @@ class ColorConverter extends Component
 				searchColorHex={this.getSearchColorHex()}
 				conversionData={this.fixConversionData(this.state.conversionData)}
 				handleChange={this.handleChange}
+				onSwapFromToClick={this.onSwapFromToClick}
 				onConvertColor={this.onConvertColor}
 				handleKeyDown={this.handleKeyDown}
 			/>

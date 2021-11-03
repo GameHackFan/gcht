@@ -80,6 +80,7 @@ const ColorConverterComponent = (props) =>
 						<select
 							className="buttonSolid"
 							name="fromChannelOrder"
+							value={props.fromChannelOrder}
 							onChange={props.handleChange}
 						>
 							<option key="none" value="none">
@@ -93,6 +94,7 @@ const ColorConverterComponent = (props) =>
 						<select
 							className="buttonSolid"
 							name="fromChannelSize"
+							value={props.fromChannelSize}
 							onChange={props.handleChange}
 						>
 							<option key="none" value="none">
@@ -109,6 +111,7 @@ const ColorConverterComponent = (props) =>
 						<select
 							className="buttonSolid"
 							name="toChannelOrder"
+							value={props.toChannelOrder}
 							onChange={props.handleChange}
 						>
 							<option key="none" value="none">
@@ -122,6 +125,7 @@ const ColorConverterComponent = (props) =>
 						<select
 							className="buttonSolid"
 							name="toChannelSize"
+							value={props.toChannelSize}
 							onChange={props.handleChange}
 						>
 							<option key="none" value="none">
@@ -145,6 +149,12 @@ const ColorConverterComponent = (props) =>
 							value={red}
 							onChange={props.handleChange}
 						/>
+						<button
+							className="buttonSolid"
+							onClick={props.onSwapFromToClick}
+						>
+							Swap From-To
+						</button>
 					</div>
 					<div className="windowContentLine colLinedFlex">
 						<label>Color Green: </label>
