@@ -178,8 +178,8 @@ const ColorEditorComponent = (props) =>
 						RGB32: ({colorInfo.rgb32}).
 					</span>
 					<span>
-						HEX ADDRESS: {colorInfo.hexIndex}, 
-						DEC ADDRESS: {colorInfo.index}.
+						HEX ADDRESS: {colorInfo.hexByteIndex}, 
+						DEC ADDRESS: {colorInfo.byteIndex}.
 					</span>
 				</div>
 			</div>

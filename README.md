@@ -5,8 +5,8 @@ A tool to help edit color in games. It is capable of helping you edit colors for
 You can access the editor [here](https://gamehackfan.github.io/gcht/).
 <br/><br/>
 
-Version 0.3 Changes:
-- Added a button to swap all channel data between from and to on Color Converter.
+Version 0.4 Changes:
+- ColorEditor bug fix, fixed a bug that was causing the addresses of the colors to not be shown.
 
 See all changes made [here](https://github.com/GameHackFan/gcht/blob/main/changelog).
 <br/><br/>

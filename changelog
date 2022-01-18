@@ -1,3 +1,7 @@
+Version 0.4 Changes:
+- ColorEditor bug fix, fixed a bug that was causing the addresses of the colors to not be shown.
+
+
 Version 0.3 Changes:
 - Added a button to swap all channel data between from and to on Color Converter.
 
