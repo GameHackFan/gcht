@@ -1,55 +1,181 @@
 class ComponentService
 {
-	constructor()
-	{
-		this.infoMap = this.createInfoMap();
-	}
+  requestFile = (event) =>
+  {
+    let fb = event.target.querySelector("input");
 
-	getInfoMap = () =>
-	{
-		return this.infoMap;
-	}
+    if(fb)
+      fb.click();
+  }
 
-	isActiveWindowContent = (componentKey) =>
-	{
-		let i = this.infoMap[componentKey];
-		return i && i.type === "windowContent" && i.active;
-	}
+  downloadFile = (content, filename, contentType) =>
+  {
+    let data = content instanceof Blob ? content :
+        new Blob([content], {type: contentType});
+    let a = document.createElement('a');
+    a.download = filename;
+    a.href = window.URL.createObjectURL(data)
+    a.dataset.downloadurl = [contentType, a.download, a.href].join(':');
+    a.click();
+  }
 
-	setWindowActive = (componentKey, active) =>
-	{
-		let ci = this.infoMap[componentKey];
-		
-		if(ci)
-			ci.active = active;
-	}
+  setController = (key, controller) =>
+  {
+    dataMap[key].controller = controller;
+  }
 
-	createInfoMap = () =>
-	{
-		let im = {};
-		im.manager = this.createComponentInfo(
-				"windowContent", "Editor Manager", true, false);
-		im.colorEditor = this.createComponentInfo(
-				"windowContent", "Color Editor", false, true);
-		im.colorConverter = this.createComponentInfo(
-				"windowContent", "Color Converter", false, true);
-		im.zoom = this.createComponentInfo(
-				"windowContent", "Component Zoom", false, true);
-		return im;
-	}
+  getComponentData = (key) =>
+  {
+    const c = dataMap[key];
+    return c ? c : createComponentData(key, "windowContent", "Invalid", true);
+  }
 
-	createComponentInfo = (type, title, active, canClose) =>
-	{
-		let ci = {}
-		ci.type = type;
-		ci.title = title;
-		ci.active = active;
-		ci.canClose = canClose;
-		return ci;
-	}
+  isComponentActive = (key) =>
+  {
+    const c = dataMap[key];
+    return (c && c.type === "windowContent" && c.active) ? true : false;
+  }
+
+  getKeys = () =>
+  {
+    return Object.keys(dataMap);
+  }
+
+  openWindow = (key) =>
+  {
+    const cd = dataMap[key];
+
+    if(cd)
+    {
+      cd.active = true;
+      cd.showContent = true;
+      cd.showHintText = false;
+      this.callMethod("windowList", "updateActiveWindowList");
+    }
+  }
+
+  toggleHintText = (key) =>
+  {
+    const cd = dataMap[key];
+
+    if(cd)
+      cd.showHintText = !cd.showHintText;
+  }
+
+  toggleContent = (key) =>
+  {
+    const cd = dataMap[key];
+
+    if(cd)
+      cd.showContent = !cd.showContent;
+  }
+
+  closeWindow = (key) =>
+  {
+    const cd = dataMap[key];
+
+    if(cd?.canClose)
+    {
+      cd.active = false;
+      cd.controller = null;
+      this.callMethod("windowList", "updateActiveWindowList");
+    }
+  }
+
+  callMethod = (key, methodName) =>
+  {
+    const controller = dataMap[key]?.controller;
+    const method = controller ? controller[methodName] : null;
+
+    if(method)
+      method();
+  }
+
+  forceFocusToElement = (event, code, elementId) =>
+  {
+    if(event.altKey && event.code === code)
+    {
+      event.stopPropagation();
+      const element = document.getElementById(elementId);
+
+      if(element)
+        element.focus();
+    }
+  }
+
+  executeKeyEvent = (codeMap, altKey, event, callback) =>
+  {
+    if(codeMap && event && event.altKey === altKey)
+    {
+      let keys = Object.keys(codeMap);
+
+      for(let i = 0; i < keys.length; i++)
+      {
+        if(event.code === codeMap[keys[i]])
+        {
+          callback(keys[i]);
+          break;
+        }
+      }
+    }
+  }
+
+  onElementValueChange = (event, obj, methodName) =>
+  {
+    if(obj)
+    {
+      const v = event?.target?.value;
+      const method = obj[methodName];
+      event.target.value = v;
+
+      if(method)
+        method(v);
+    }
+  }
+
+  onElementDecimalValueChange = (event, obj, methodName) =>
+  {
+    if(obj)
+    {
+      const v = event?.target?.value?.replace(/\D/g, "");
+      const method = obj[methodName];
+      event.target.value = v;
+
+      if(method)
+        method(v);
+    }
+  }
+
+  constructor()
+  {
+    dataMap = createDefaultDataMap();
+  }
 }
 
 
-const componentService = new ComponentService();
-export default componentService;
+const createDefaultDataMap = () =>
+{
+  const ccd = createComponentData;
+  const wc = "windowContent";
+  const map = {};
+  map.footer = ccd("footer", "other", "Footer", false, true);
+  map.header = ccd("header", "other", "Header", false, true);
+  map.windowList = ccd("windowList", "other", "Window List", false, true);
+  map.manager = ccd("manager", wc, "Editor Manager", false, true);
+  map.zoom = ccd("zoom", wc, "Zoom Manager", true, false);
+  map.color = ccd("color", wc, "Color Editor", true, false);
+  map.converter = ccd("converter", wc, "Color Converter", true, false);
+  return map;
+}
 
+const createComponentData = (key, type, title, canClose, active, component) =>
+{
+  const showContent = true;
+  const showHintText = false;
+  return {key, type, title, canClose, active, showContent, showHintText, component};
+}
+
+let dataMap;
+
+
+export const componentService = new ComponentService();

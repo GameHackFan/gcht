@@ -1,208 +1,198 @@
 class GameService
 {
-	constructor()
-	{
-		this.gameFile = null;
-		this.clonedGame = null;
-		this.gameReady = false;
-	}
+  constructor()
+  {
+    clonedGame = null;
+    game = null;
+  }
 
-	convertHexArrayToByteArray = (hexArray) =>
-	{
-		let byteArray = new Array();
+  convertHexArrayToByteArray = (hexArray) =>
+  {
+    let byteArray = new Array();
 
-		for(let i = 0; i < hexArray.length; i++)
-			byteArray.push(parseInt(hexArray[i], 16));
+    for(let i = 0; i < hexArray.length; i++)
+      byteArray.push(parseInt(hexArray[i], 16));
 
-		return byteArray;
-	}
+    return byteArray;
+  }
 
-	convertHexToByteArray = (hex) =>
-	{
-		let hexBytes = [];
+  convertHexToByteArray = (hex) =>
+  {
+    let hexBytes = [];
 
-		for(let i = 0; i < hex.length; i += 2)
-			hexBytes.push(hex.substring(i, i + 2));
+    for(let i = 0; i < hex.length; i += 2)
+      hexBytes.push(hex.substring(i, i + 2));
 
-		return hexBytes.reverse();
-	}
+    return hexBytes.reverse();
+  }
 
-	getDecimals = (index, amount, decimalSize) =>
-	{
-		let value;
-		let aux;
-		let decimals = [];
-		let fixedAmount = amount * decimalSize;
+  getDecimals = (index, amount, decimalSize) =>
+  {
+    let value;
+    let aux;
+    let decimals = [];
+    let fixedAmount = amount * decimalSize;
 
-		for(let i = index; i < index + fixedAmount; i += decimalSize)
-		{
-			value = 0;
+    for(let i = index; i < index + fixedAmount; i += decimalSize)
+    {
+      value = 0;
 
-			for(let j = 0; j < decimalSize; j++)
-			{
-				aux = this.clonedGame[i + j];
-				
-				if(isNaN(aux))
-				{
-					value = null;
-					break;
-				}
-				else
-				{
-					value |= aux << (j * 8);
-					value = value >>> 0;
-				}
-			}
-			
-			decimals.push(value);
-		}
+      for(let j = 0; j < decimalSize; j++)
+      {
+        aux = clonedGame[i + j];
+        
+        if(isNaN(aux))
+        {
+          value = null;
+          break;
+        }
+        else
+        {
+          value |= aux << (j * 8);
+          value = value >>> 0;
+        }
+      }
+      
+      decimals.push(value);
+    }
 
-		return decimals;
-	}
+    return decimals;
+  }
 
-	convertHexBytesToDecimalBytes = (bytes, byteFormat) =>
-	{
-		return byteFormat === "hex" ?
-				this.convertHexArrayToByteArray(bytes) : bytes;
-	}
+  convertHexBytesToDecimalBytes = (bytes, byteFormat) =>
+  {
+    return byteFormat === "hex" ?
+        this.convertHexArrayToByteArray(bytes) : bytes;
+  }
 
-	setByte = (byteIndex, value) =>
-	{
-		if(this.clonedGame && !isNaN(value) && value > -1 && value < 256)
-			this.clonedGame[byteIndex] = value;
-	}
+  setByte = (byteIndex, value) =>
+  {
+    if(clonedGame && !isNaN(value) && value > -1 && value < 256)
+      clonedGame[byteIndex] = value;
+  }
 
-	setHexByte = (byteIndex, value) =>
-	{
-		let hex = parseInt(value, 16);
-		this.setByte(byteIndex, hex);
-	}
+  setHexByte = (byteIndex, value) =>
+  {
+    let hex = parseInt(value, 16);
+    this.setByte(byteIndex, hex);
+  }
 
-	setBytes = (byteIndex, bytes) =>
-	{
-		bytes.forEach((byte, index) => this.clonedGame[byteIndex + index] = byte);
-	}
+  setBytes = (byteIndex, bytes) =>
+  {
+    bytes.forEach((byte, index) => clonedGame[byteIndex + index] = byte);
+  }
 
-	setHexBytes = (byteIndex, bytes) =>
-	{
-		bytes.forEach((byte, index) => this.setHexByte(byteIndex + index, byte));
-	}
+  setHexBytes = (byteIndex, bytes) =>
+  {
+    bytes.forEach((byte, index) => this.setHexByte(byteIndex + index, byte));
+  }
 
-	getByte = (byteIndex) =>
-	{
-		return this.clonedGame[byteIndex];
-	}
+  getByte = (byteIndex) =>
+  {
+    return clonedGame[byteIndex];
+  }
 
-	getBytes = (byteIndex, amount) =>
-	{
-		return this.clonedGame.slice(byteIndex, byteIndex + amount);
-	}
+  getBytes = (byteIndex, amount) =>
+  {
+    return clonedGame.slice(byteIndex, byteIndex + amount);
+  }
 
-	indexOfBytes = (bytes, byteFormat, startIndex) =>
-	{
-		if(this.clonedGame)
-		{
-			let fbs = this.convertHexBytesToDecimalBytes(bytes, byteFormat);
-			return fbs.findIndex(this.checkBytes, startIndex);
-		}
+  indexOfBytes = (bytes, byteFormat, startIndex) =>
+  {
+    if(clonedGame)
+    {
+      let fbs = this.convertHexBytesToDecimalBytes(bytes, byteFormat);
+      return clonedGame.findIndex(fbs, startIndex);
+    }
 
-		return -1;
-	}
+    return -1;
+  }
 
-	indexesOfBytes = (bytes, byteFormat, startIndex) =>
-	{
-		let indexes = [];
+  indexesOfBytes = (bytes, byteFormat, startIndex) =>
+  {
+    let indexes = [];
 
-		if(this.clonedGame)
-		{
-			let fbs = this.convertHexBytesToDecimalBytes(bytes, byteFormat);	
-			let i, j;
+    if(clonedGame)
+    {
+      let fbs = this.convertHexBytesToDecimalBytes(bytes, byteFormat);
+      let i, j;
 
-			mainLoop:
-			for(i = startIndex; i < this.clonedGame.length; i += fbs.length)
-			{
-				for(j = 0; j < fbs.length; j++)
-				{
-					if(fbs[j] !== this.clonedGame[i + j])
-						continue mainLoop;
-				}
+      mainLoop:
+      for(i = startIndex; i < clonedGame.length; i += fbs.length)
+      {
+        for(j = 0; j < fbs.length; j++)
+        {
+          if(fbs[j] !== clonedGame[i + j])
+            continue mainLoop;
+        }
 
-				indexes.push(i);
-			}
-		}
+        indexes.push(i);
+      }
+    }
 
-		return indexes;
-	}
+    return indexes;
+  }
 
-	generateDifferenceMap = () =>
-	{
-		if(this.game && this.clonedGame && this.game.length == this.clonedGame.length)
-		{
-			let diffMap = {};
-			this.game.forEach((byte, index) =>
-			{
-				if(byte !== this.clonedGame[index])
-					diffMap[index] = this.clonedGame[index].toString(16);
-			});
-			return diffMap;
-		}
+  generateDifferenceMap = () =>
+  {
+    if(game && clonedGame && game.length == clonedGame.length)
+    {
+      let diffMap = {};
+      game.forEach((byte, index) =>
+      {
+        if(byte !== clonedGame[index])
+          diffMap[index] = clonedGame[index].toString(16);
+      });
+      return diffMap;
+    }
 
-		return {};
-	}
+    return {};
+  }
 
-	applyDifferenceMap = (differenceMap) =>
-	{
-		if(this.clonedGame && differenceMap)
-		{
-			let keys = Object.keys(differenceMap);
-			keys.forEach((key) =>
-			{
-				let value = parseInt(differenceMap[key], 16);
-				let index = parseInt(key);
+  applyDifferenceMap = (differenceMap) =>
+  {
+    if(clonedGame && differenceMap)
+    {
+      let keys = Object.keys(differenceMap);
+      keys.forEach((key) =>
+      {
+        let value = parseInt(differenceMap[key], 16);
+        let index = parseInt(key);
 
-				if(!isNaN(index) && index > -1 && index < this.clonedGame.length)
-					this.clonedGame[key] = value & 255;
-			});
-		}
-	}
+        if(!isNaN(index) && index > -1 && index < clonedGame.length)
+          clonedGame[key] = value & 255;
+      });
+    }
+  }
 
-	checkBytes = (element, index, checkBytes) =>
-	{
-		for(let i = 0; i < fbs.length; i++)
-		{
-			if(checkBytes[i] !== clonedGame[index + i])
-				return false;
-		}
-		
-		return true;
-	}
+  cloneGame = () =>
+  {
+    clonedGame = game.slice();
+  }
+  
+  setGame = (newGame) =>
+  {
+    game = newGame;
+  }
 
-	cloneGame = () =>
-	{
-		this.clonedGame = this.game.slice();
-	}
-	
-	setGame = (game) =>
-	{
-		this.game = game;
-	}
+  getClonedGame = () =>
+  {
+    return clonedGame;
+  }
 
-	getClonedGame = () =>
-	{
-		return this.clonedGame;
-	}
+  isGameReady = () =>
+  {
+    return clonedGame ? true : false;
+  }
 
-	isGameReady = () =>
-	{
-		return this.clonedGame ? true : false;
-	}
-
-	isValidIndex = (index) =>
-	{
-		return index > -1 && index < this.clonedGame.length;
-	}
+  isValidIndex = (index) =>
+  {
+    return index > -1 && index < clonedGame.length;
+  }
 }
 
 
-let gameService = new GameService();
-export default gameService;
+let clonedGame, game;
+
+
+export const gameService = new GameService();

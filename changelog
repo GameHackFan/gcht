@@ -1,3 +1,9 @@
+Version 0.5 Changes:
+- Changed from React.js to Svelte.
+- Small changes to the UI.
+- Minor changes.
+
+
 Version 0.4 Changes:
 - ColorEditor bug fix, fixed a bug that was causing the addresses of the colors to not be shown.
 

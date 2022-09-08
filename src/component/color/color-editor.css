@@ -1,0 +1,211 @@
+.color-editor:focus,
+.color-editor .color-list button,
+.color-editor .search-result > button:focus
+{
+  outline: none;
+}
+
+.color-editor .channel-area span
+{
+  min-width: 6.875rem;
+}
+
+.color-editor .channel-area select
+{
+  min-width: 11.25rem;
+  margin-right: 1.25rem;
+}
+
+.color-editor .color-list
+{
+  min-height: 3.75rem;
+
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  color: whitesmoke;
+  border-color: whitesmoke;
+  background-color: #2D193CC0;
+}
+
+.color-editor .color-list button
+{
+  min-height: 1.875rem;
+  max-height: 1.875rem;
+  min-width: 1.875rem;
+  max-width: 1.875rem;
+
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: whitesmoke;
+
+  margin-top: auto;
+  margin-bottom: auto;
+
+  cursor: pointer;
+}
+
+.color-editor .color-list button:nth-child(8)
+{
+  min-height: 2.5rem;
+  max-height: 2.5rem;
+  min-width: 2.5rem;
+  max-width: 2.5rem;
+
+  border-width: 2px;
+  border-style: solid;
+  border-color: whitesmoke;
+}
+
+.color-editor .color-list button:not(:last-child)
+{
+  margin-right: auto;
+}
+
+.color-editor .select-area input
+{
+  min-width: 6.25rem;
+  max-width: 6.25rem;
+
+  margin-right: 2.5rem;;
+}
+
+.color-editor .select-area div
+{
+  margin-top: 0;
+  margin-left: auto;
+}
+
+.color-editor .select-area span
+{
+  max-width: 100%;
+}
+
+.color-editor .title
+{
+  color: #2D193C;
+  font-weight: bold;
+  font-size: 1.25em;
+
+  margin-top: 1.5rem;
+}
+
+.color-editor .title h3
+{
+  margin: 0;
+}
+
+.color-editor .edit-area span,
+.color-editor .search-area span
+{
+  min-width: 5.625rem;
+}
+
+.color-editor .edit-area input[type="text"],
+.color-editor .edit-area input[type="number"],
+.color-editor .search-area input[type="text"],
+.color-editor .search-area input[type="number"]
+{
+  min-width: 3.75rem;
+  max-width: 3.75rem;
+}
+
+.color-editor .edit-area button
+{
+  margin-left: 1.5rem;
+}
+
+.color-editor .edit-area > div:last-child
+{
+  margin-top: 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.color-editor .edit-area > div:last-child > div
+{
+  min-width: 5rem;
+  max-width: 5rem;
+  min-height: 5rem;
+  max-height: 5rem;
+
+  border-radius: 4px;
+  border-style: solid;
+  border-color: whitesmoke;
+  border-width: 1px;
+}
+
+.color-editor .search-area
+{
+  margin-left: auto;
+}
+
+.color-editor .search-area button
+{
+  margin-left: auto;
+}
+
+.color-editor .search-area .search-result
+{
+  min-height: 12.5rem;
+  max-height: 12.5rem;
+  min-width: 18.75rem;
+  max-width: 18.75rem;
+  overflow-y: scroll;
+
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+
+  margin-top: 0.75rem;
+
+  color: whitesmoke;
+  border-color: whitesmoke;
+  background-color: #2D193CC0;
+}
+
+.color-editor .search-area .search-result button
+{
+  display: block;
+
+  color: whitesmoke;
+  background-color: transparent;
+
+  border: 0;
+
+  padding-right: 0.375rem;
+  padding-left: 0.375rem;
+  margin-left: 0;
+
+  white-space: nowrap
+}
+
+.color-editor .search-area .search-result button:hover
+{
+  color: #FF7F50;
+  cursor: pointer;
+}
+
+.color-editor .search-area .search-result .selected
+{
+  background-color: #F5F5F5C0;
+  color: #2D193C;
+}
+
+.color-editor > .warning
+{
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  display: block;
+}
+
+.color-editor .patch-area button
+{
+  margin-right: 0.75rem;
+}
